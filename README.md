@@ -1,4 +1,5 @@
 ### Preventing the Re-Rendering of Sub-Components
+SEARCHABLE KEYWORD  
 - React-PreventReRender
 
 React.memo();
@@ -29,6 +30,7 @@ But for a function, object or arrays, it will return false.
 So when props are compared, if the props has a function, function comparison returns false hence, the button component will be re-evaluated.
 
 ### Preventing the Re-Rendering of Sub-Components with Function Passed as Props
+SEARCHABLE KEYWORD  
 - React-useCallback-PreventReRender
 
 In order to prevent this, call useCallBack function.
