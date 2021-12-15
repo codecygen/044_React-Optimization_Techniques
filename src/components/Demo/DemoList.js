@@ -23,4 +23,13 @@ const DemoList = (props) => {
   );
 };
 
+// React-FunctionOptimization
+// This prevents 'DemoList' component from being
+// re-rendered when the parent component 'App'
+// gets re-rendered (Unless the props of
+// 'DemoList' component changes.)
+// Here the props of 'Demolist' component is a function
+// Functions are always treated as differently in ever rendering
+// of the parent component.
+// For a solution to this, refer to 'App' component
 export default React.memo(DemoList);

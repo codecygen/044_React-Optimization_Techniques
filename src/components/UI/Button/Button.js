@@ -16,4 +16,10 @@ const Button = (props) => {
   );
 };
 
+// React-PreventReRender
+// React-FunctionOptimization
+// This prevents 'Button' component from being
+// re-rendered when the parent component 'App'
+// gets re-rendered (Unless the props of
+// 'Button' component changes.)
 export default React.memo(Button);
