@@ -12,10 +12,14 @@ const DemoList = (props) => {
   // changes, props will change. That's why "useMemo"
   // would try to run the function again. To prevent it,
   // we desctructure items from props and only use "items"
-  // as a dependency
+  // as a dependency.
   const { items } = props;
 
   // React-useMemo-PreventReCalculation
+  // We want to prevent this sorting to be run in every
+  // "DemoList" component re-rendering, because sorting can
+  // be a very resource intensive thing which might slow down
+  // your app.
   const sortedList = useMemo(() => {
     console.log('Items sorted');
     return items.sort((a, b) => a - b);

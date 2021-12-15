@@ -1,3 +1,5 @@
+You will always know when to use which method as you get better in React. Sometimes your app will slow down and you would like to prevent it from getting slower. Here are some of the examples that are bound to this project.
+
 Searchable Keywords
 - React-PreventReRender
 - React-useCallback-PreventReRender
@@ -38,6 +40,8 @@ So when props are compared, if the props has a function, function comparison ret
 SEARCHABLE KEYWORD  
 - React-useCallback-PreventReRender
 
+useCallback is used for functions.
+
 In order to prevent this, call useCallBack function.
 
 In this method, what the system will do is given down below,
@@ -65,4 +69,126 @@ setObject((prevState) => ({
 SEARCHABLE KEYWORD  
 - React-useMemo-PreventReCalculation
 
-Sometimes only a part of the component needs to be prevented from calculation upon each re-rendering of the component.
+useMemo is used for values such as objects and arrays.
+
+Sometimes only a part of the component needs to be prevented from calculation upon each re-rendering of the component. In our code example, the detail example is given.
+
+You should only use "useMemo" for calculations that are resource intensive.
+
+
+
+# When to use useMemo and useCallback
+
+Hi Tony,  All three decide whether to use the
+
+previously cached content (value) or
+
+generate a new (updated) value (re-render).
+
+Using the cached version is called memoization.
+
+-----------------------------------------
+
+#1)  useMemo:  Used for values.
+
+Technically,  it can be used for component memoization.
+
+Prefer to use memo for functional components.
+
+- - - - - - - - -
+
+useMemo invokes its wrapped function &
+
+returns the result of its wrapped function.
+
+- - - - - - - - -
+
+It's second argument is a dependency array.
+
+https://reactjs.org/docs/hooks-reference.html#usememo
+
+-----------------------------------------
+
+#2)  memo:  Used for functional components.
+
+It's second argument is a dependency (callback) function.
+
+https://reactjs.org/docs/react-api.html#reactmemo
+
+-----------------------------------------
+
+#3)  useCallback:  Used for functions.
+
+If memo (or useMemo) won't work,
+
+because one of its dependency functions is
+
+unnecessarily re-created (a new reference), 
+
+useCallback will memoize that dependency function
+
+so memo (or useMemo) sees the same (consistent) reference.
+
+- - - - - - - - -
+
+Often used to prevent an infinite loop (same reason as above).
+
+- - - - - - - - -
+
+useCallback does not invoke its wrapped function &
+
+returns that wrapped function.   Reminder (below):
+
+useMemo invokes its wrapped function &
+
+returns the result of its wrapped function.
+
+- - - - - - - - -
+
+useCallback's second argument is a dependency array.
+
+https://reactjs.org/docs/hooks-reference.html#usecallback
+
+==============================
+
+ADDITIONAL  INFORMATION:
+
+memo offers a dependency function.
+
+PureComponent does not.
+
+The a dependency function is very important
+
+for surgically controlling the optimization.
+
+- - - - - - - - - - - - - - - - -
+
+shouldComponentUpdate offers a way
+
+to fine tune (or target) the optimization.
+
+By returning a boolean.
+
+- - - - - - - - - - - - - - - - -
+
+Unless you know how PureComponent
+
+will affect your app,  PureComponent can be like:
+
+"Trying to catch a fish using dynamite".
+
+---------------------------------------
+
+memo,  PureComponent & shouldComponentUpdate:
+
+Tell the render method;
+
+Do your virtual DOM cashing & non-caching (see image)
+
+you normally do (meaning:  Run your calculations),  or,
+
+use the previous (full) cache snapshot
+
+(meaning:  Don't run the virtual DOM calculations, 
+
+just use cache).

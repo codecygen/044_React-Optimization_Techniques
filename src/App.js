@@ -10,6 +10,7 @@ function App() {
   const [listTitle, setListTitle] = useState('My List');
 
   // React-useCallback-PreventReRender
+  // useCallback is used for functions.
   // Simply wrap the function with useCallback
   // So it will not re-render the props that passes
   // function 'changeTitleHandler', 'onClick' props of 'Button' component. 
@@ -40,6 +41,7 @@ function App() {
   }, []);
 
   // React-useMemo-PreventReCalculation
+  // useMemo is used for values such as objects and arrays.
   // Here on this level, we also need to wrap the array
   // with useMemo so React will realize this array is same
   // with the array last time the "App" was rendered.
