@@ -1,3 +1,8 @@
+Searchable Keywords
+- React-PreventReRender
+- React-useCallback-PreventReRender
+- React-useMemo-PreventReCalculation
+
 ### Preventing the Re-Rendering of Sub-Components
 SEARCHABLE KEYWORD  
 - React-PreventReRender
@@ -45,3 +50,19 @@ array1 === array2
 // Will return true because here array1 is pointing array2 
 // instead of being a separate array.ss
 ```
+
+### useState - Ensuring that Previous State will be Updated
+Because there could be multiple states and React prioritizes the states, some of the states might have a higher priority over the others, this might cause issues if you don't use the previous state in set functions of the "useState" hook. Because it will ensure that not the state that the React component last time was re-rendered is being used, but the last state is being taken into account and new state set based on the old state.
+
+```javascript
+setObject((prevState) => ({
+  ...prevState,
+  secondKey: 'value',
+}));
+```
+
+### useMemo - Preventing Resource Heavy Calculation in Future Renders
+SEARCHABLE KEYWORD  
+- React-useMemo-PreventReCalculation
+
+Sometimes only a part of the component needs to be prevented from calculation upon each re-rendering of the component.

@@ -1,4 +1,5 @@
 // React-useCallback-PreventReRender
+// React-useMemo-PreventReCalculation
 import React, { useState, useCallback, useMemo } from 'react';
 
 import './App.css';
@@ -26,10 +27,22 @@ function App() {
   // guarantees us that it will run the function only the first time. So the function will
   // never change and it will always be re-used.
 
+  // Here in this case, in Javascript all the variables will be stored to be used later.
+  // So if for some reason you would like to change a variable inside the function, you
+  // cannot do it because of the javascript nature. Because of the Javascript's 'Closures'
+  // concept, Javascript will not allow that. This is why we have dependency function so,
+  // in case we would like to keep track of a changing variable that is controlled outside
+  // the scope of the function, then we can add that variable as a dependency to the 'useCallback'
+  // function.
+
   const changeTitleHandler = useCallback(() => {
     setListTitle('New Title');
   }, []);
 
+  // React-useMemo-PreventReCalculation
+  // Here on this level, we also need to wrap the array
+  // with useMemo so React will realize this array is same
+  // with the array last time the "App" was rendered.
   const listItems = useMemo(() => [5, 3, 1, 10, 9], []);
 
   return (
