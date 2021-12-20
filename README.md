@@ -79,16 +79,6 @@ You should only use "useMemo" for calculations that are resource intensive.
 
 # When to use useMemo and useCallback
 
-Hi Tony,  All three decide whether to use the
-
-previously cached content (value) or
-
-generate a new (updated) value (re-render).
-
-Using the cached version is called memoization.
-
------------------------------------------
-
 #1)  useMemo:  Used for values.
 
 Technically,  it can be used for component memoization.
