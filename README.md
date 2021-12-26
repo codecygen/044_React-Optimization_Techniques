@@ -36,23 +36,27 @@ But for a function, object or arrays, it will return false.
 
 So when props are compared, if the props has a function, function comparison returns false hence, the button component will be re-evaluated.
 
-### Preventing the Re-Rendering of Sub-Components with Function Passed as Props
-SEARCHABLE KEYWORD  
+### Preventing the Re-Rendering of Sub-Components with Function Passed as Props (useCallback Function)
+SEARCHABLE KEYWORD
 - React-useCallback-PreventReRender
 
-useCallback is used for functions.
+For "useCallback" function, keep in mind that wrapped function's argument is not passed as a dependency. Because wrapped function parameters does not have any sideEffect on the overall logic of the function, meaning it would always return the same value for same input if nothing else is impacting the logic.
 
-In order to prevent this, call useCallBack function.
+useCallback is used to wrap functions so that the function is not going to be re-rendered, whenever the component that contains the function re-renders.
 
-In this method, what the system will do is given down below,
+Normally, if you don't use a useCallback function, functions will be seen as a new function each time the component which contains the function is re-evaluated.
+
+It is a good practice to have a dependency for "useCallback" function. But in case the parameter is the wrapped function's argument, state updating function or a parameter that is not evaluated outside the function are not put as dependencies.
+
+In this method, when the function is wrapped with "useCallback" function what system will do is given down below,
 
 ```javascript
 let array1 = [1, 2, 3];
 let array2 = [1, 2, 3];
-array1 = array2
-array1 === array2
+array1 = array2;
+array1 === array2;
 // Will return true because here array1 is pointing array2 
-// instead of being a separate array.ss
+// instead of being a separate arrays
 ```
 
 ### useState - Ensuring that Previous State will be Updated
